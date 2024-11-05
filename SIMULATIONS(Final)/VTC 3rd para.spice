@@ -1,0 +1,29 @@
+.lib "/home/yash/xschem_guth/Xues/sky130_fd_pr/models/sky130.lib.spice" tt
+
+** sch_path: /home/yash/schematics/Schmitt Trigger.sch
+** .subckt Schmitt Trigger Vout
+*.opin Vout
+
+XM2 net4 net1 GND GND sky130_fd_pr__nfet_01v8 L=5 W=5
+XM4 Vout net1 net4 net4 sky130_fd_pr__nfet_01v8 L=5 W=5
+XM3 net2 net1 net3 net2 sky130_fd_pr__pfet_01v8 L=4 W=4  
+XM6 Vout net1 net2 Vout sky130_fd_pr__pfet_01v8 L=4 W=4
+XM5 net2 Vout GND net2 sky130_fd_pr__pfet_01v8 L=4 W=4
+XM7 net3 Vout net4 net4 sky130_fd_pr__nfet_01v8 L=5 W=5
+
+V1 net3 GND 5   
+V2 net1 GND DC 0  
+
+.GLOBAL GND
+
+.DC V2 0 5 0.01
+
+.control
+run
+
+plot V(Vout) V(net1)
+wrdata Vouth_data3 V(Vout) 
+
+.endc
+.end
+
