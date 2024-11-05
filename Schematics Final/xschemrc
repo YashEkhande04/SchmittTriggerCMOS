@@ -1,0 +1,3 @@
+1 set XSCHEM_LIBRARY_PATH{}
+2 append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library
+3 append XSCHEM_LIBRARY :/home/yash/schematics/xschem_sky130
